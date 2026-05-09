@@ -9,3 +9,9 @@ plotly
 langchain-groq
 python-dotenv
 joblib
+shap
+mlflow
+fastapi
+uvicorn
+python-multipart
+requests
