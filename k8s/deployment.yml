@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aml-detection
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aml-detection
+  template:
+    metadata:
+      labels:
+        app: aml-detection
+    spec:
+      containers:
+        - name: aml-detection
+          image: aml-detection:latest
+          ports:
+            - containerPort: 8501
+          envFrom:
+            - secretRef:
+                name: aml-secrets
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
